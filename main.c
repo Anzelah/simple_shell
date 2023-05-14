@@ -1,41 +1,30 @@
 #include "main.h"
-/**
- * _strlen - get the length of a string
- *@str: the string
- * Return - int
- */
-unsigned long int _strlen( char *str)
-{
-	unsigned long int n = 0;
-	while (str[n])
-		n++;
-	return (n);
-}
-/**
- * _printf - prints a string
- *@str: the string to print
- */
-void _printf(char *str)
-{
-	write( STDOUT_FILENO, str, _strlen(str));
-}
+
 /**
  * main - entry point
  *@argc: arguments count
  *@argv: arguments vectors
- * Return - int 
+ * Return: int
  */
-
 int main(int argc, char **argv)
 {
 	size_t len = 0;
 	char *line = NULL;
 	ssize_t r_getline;
+	char **parsed_input;
+	_action action;
+
 	while (1)
 	{
+		_printf("#cisfun$ ");
 		r_getline = getline(&line, &len, stdin);
-		_printf("input = \n");
-		break;
+		if (r_getline == -1)
+			break;
+		parsed_input = parse_input(line);
+		free(line);
+		action = interpret_input(parsed_input);
+		if (!execute_action(action))
+			break;
 	}
 	return (0);
 }
