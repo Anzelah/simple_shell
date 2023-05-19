@@ -12,7 +12,7 @@ void free_tokens(char **tokens)
 {
 	int i = 0;
 
-	while (tokens[i] != NULL)
+	while ( tokens && tokens[i] != NULL)
 	{
 		free(tokens[i]);
 		i++;
@@ -26,22 +26,18 @@ void free_tokens(char **tokens)
  *
  * Return: array
  */
-
 char **parse_input(char *str)
 {
 	char *parsed;
 	char **tokens; /* this is an array */
 	char *src; /* hold our string on heap*/
-	char *delim = " \n";
+	char *delim = " ";
 	int length = 0;
       	int count_tokens = 0;
 
-	src = malloc(sizeof(char) * strlen(str));
-	if (src == NULL)
+	src = _strdup(str);
+	if (_strdup(src) == NULL)
 		return (NULL);
-
-	strcpy(src, str);
-
 	parsed = strtok(str, delim);
 	while (parsed != NULL)
 	{
@@ -52,20 +48,19 @@ char **parse_input(char *str)
 
 	tokens = malloc(sizeof(char *) * count_tokens);
 	if (tokens == NULL)
+	{
+		free(src);
 		return (NULL);
+	}
 
 	parsed = strtok(src, delim);
 	while (parsed != NULL)
 	{
-		tokens[length] = malloc(sizeof(char) * (strlen(parsed) + 1));
-		strcpy(tokens[length], parsed);
-		length;
+		tokens[length] = _strdup(parsed);
+		length++;
 		parsed = strtok(NULL, delim);
 	}
-	tokens[length] = NULL;
-
-	free_tokens(tokens); /* created individual function to free all the arrays */
-	free(str);
-
-	return (0);
+	tokens[length] = NULL;/* this line save my life*/
+	free(src);
+	return (tokens);
 }

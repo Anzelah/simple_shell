@@ -22,6 +22,7 @@ typedef struct s_action _action;
 /*String manipulation*/
 unsigned long int _strlen( char *str);
 void _printf(char *str);
+char *_strdup(char *str);
 
 /*Helper functions*/
 char **parse_input(char *line);

@@ -25,9 +25,12 @@ void _printf(char *str)
 	write(STDOUT_FILENO, str, _strlen(str));
 }
 /**
- * _strcmp - compares two string
- *@s1: first string
- *@s2: second string
- * Return: 1 if equal 0 if not
+ * _strdup - duplicates  string
+ *@src:  string
+ * Return: pointer to the new string
  */
+char *_strdup(char *src)
+{
+	return (strdup(src));
+}
 
