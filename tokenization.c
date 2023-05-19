@@ -12,7 +12,7 @@ void free_tokens(char **tokens)
 {
 	int i = 0;
 
-	while ( tokens && tokens[i] != NULL)
+	while (tokens[i] != NULL)
 	{
 		free(tokens[i]);
 		i++;
@@ -36,7 +36,7 @@ char **parse_input(char *str)
       	int count_tokens = 0;
 
 	src = _strdup(str);
-	if (_strdup(src) == NULL)
+	if (src == NULL)
 		return (NULL);
 	parsed = strtok(str, delim);
 	while (parsed != NULL)
