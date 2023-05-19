@@ -3,11 +3,11 @@
  *parse_input - pasre the input ("ls -l /home") -> [ls, -l, /home]
  *@str: the string
  * Return: array of string
- */
+ *
 char **parse_input(char *str)
 {
 
-	return (NULL);
+	return (NULL); 
 }
 /**
  * interpret_input - interpert the input ([ls,-l,/home] -> action

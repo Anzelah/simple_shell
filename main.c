@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 {
 	size_t len = 0;
 	char *line = NULL;
-	ssize_t r_getline;
+	ssize_t r_getline = 0;
 	char **parsed_input;
 	_action action;
 

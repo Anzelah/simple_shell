@@ -1,9 +1,11 @@
 #include "main.h"
+
 /**
  * _strlen - get the length of a string
  *@str: the string
  * Return: int
  */
+
 unsigned long int _strlen(char *str)
 {
 	unsigned long int n = 0;
@@ -12,10 +14,12 @@ unsigned long int _strlen(char *str)
 		n++;
 	return (n);
 }
+
 /**
  * _printf - prints a string
  *@str: the string to print
  */
+
 void _printf(char *str)
 {
 	write(STDOUT_FILENO, str, _strlen(str));

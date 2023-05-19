@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * free_tokens - free memory allocated to individual arrays
@@ -21,24 +24,25 @@ void free_tokens(char **tokens)
  * parsed_input - tokenize the string into multiple pieces
  * @line: input string to be tokenized
  *
- * Return: always 0
+ * Return: array
  */
 
-char **parsed_input(char *line)
+char **parse_input(char *str)
 {
 	char *parsed;
 	char **tokens; /* this is an array */
-	char *str; /* hold our string on heap*/
+	char *src; /* hold our string on heap*/
 	char *delim = " \n";
-	int length = 0, count_tokens = 0;
+	int length = 0;
+      	int count_tokens = 0;
 
-	str = malloc(sizeof(char) * (strlen(line) + 1));
-	if (str == NULL)
+	src = malloc(sizeof(char) * strlen(str));
+	if (src == NULL)
 		return (NULL);
 
-	strcpy(str, line);
+	strcpy(src, str);
 
-	parsed = strtok(line, delim);
+	parsed = strtok(str, delim);
 	while (parsed != NULL)
 	{
 		count_tokens++;
@@ -50,7 +54,7 @@ char **parsed_input(char *line)
 	if (tokens == NULL)
 		return (NULL);
 
-	parsed = strtok(str, delim);
+	parsed = strtok(src, delim);
 	while (parsed != NULL)
 	{
 		tokens[length] = malloc(sizeof(char) * (strlen(parsed) + 1));

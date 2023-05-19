@@ -1,8 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * struct s_action - action's structure
@@ -22,7 +24,10 @@ unsigned long int _strlen( char *str);
 void _printf(char *str);
 
 /*Helper functions*/
-char **parse_input(char *);
+char **parse_input(char *line);
 _action interpret_input(char**);
 int execute_action(_action);
+/* parsing */
+void free_tokens(char **tokens);
+
 #endif
