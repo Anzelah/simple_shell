@@ -43,7 +43,10 @@ StringList *AppendString(StringList **head, const char *str);
 char **parse_input(char *);
 _action *interpret_input(char**);
 int execute_action(_action);
+
 /* parsing */
 void free_tokens(char **tokens);
 
+/*free functions*/
+void free_action(_action *action);
 #endif

@@ -37,6 +37,31 @@ _action *interpret_input(char **parsed_input)
 	return (action);
 }
 /**
+ * free_array - free arrays
+ * @data: the arrat to be freed
+ */
+void free_array(char **data)
+{
+	int i = 0;
+
+	while (data[i])
+	{
+		free(data[i]);
+		i++;
+	}
+	free(data);
+}
+/**
+ * free_action - free action
+ *@action: the action to be freed
+ */
+void free_action(_action *action)
+{
+	free(action->cmd_name);
+	free_array(action->args);
+	free(action);
+}
+/**
  * execute_action - executes action
  *@action: the action to execute
  * Return: 0 to exit or 1
