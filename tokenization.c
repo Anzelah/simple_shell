@@ -21,8 +21,8 @@ void free_tokens(char **tokens)
 }
 
 /**
- * parsed_input - tokenize the string into multiple pieces
- * @line: input string to be tokenized
+ * parse_input - tokenize the string into multiple pieces
+ * @str: input string to be tokenized
  *
  * Return: array
  */
@@ -33,7 +33,7 @@ char **parse_input(char *str)
 	char *src; /* hold our string on heap*/
 	char *delim = " ";
 	int length = 0;
-      	int count_tokens = 0;
+	int count_tokens = 0;
 
 	src = _strdup(str);
 	if (src == NULL)

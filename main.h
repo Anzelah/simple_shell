@@ -7,6 +7,17 @@
 #include <string.h>
 
 /**
+ * struct s_string - string structure (a way to append multipe strings)
+ *@value: string value
+ *@next: next element
+ */
+typedef struct s_string
+{
+    char *value;
+    unsigned long int len;
+    struct s_string *next;
+} StringList;
+/**
  * struct s_action - action's structure
  *@cmd_name: command's name
  *@flags: flags used with the command (-)
@@ -15,7 +26,7 @@
 struct s_action
 {
 char *cmd_name;
-char **flags;
+char **flags; 
 char **args;
 };
 typedef struct s_action _action;
@@ -23,10 +34,14 @@ typedef struct s_action _action;
 unsigned long int _strlen( char *str);
 void _printf(char *str);
 char *_strdup(char *str);
+int _strcmp(char *s1, char *s2);
+
+/*linked list manipulation */
+StringList *AppendString(StringList **head, const char *str);
 
 /*Helper functions*/
-char **parse_input(char *line);
-_action interpret_input(char**);
+char **parse_input(char *);
+_action *interpret_input(char**);
 int execute_action(_action);
 /* parsing */
 void free_tokens(char **tokens);
