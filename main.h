@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <fcntl.h>
 /**
  * struct s_string - string structure (a way to append multipe strings)
  *@value: string value
@@ -26,7 +26,6 @@ typedef struct s_string
 struct s_action
 {
 char *cmd_name;
-char **flags; 
 char **args;
 };
 typedef struct s_action _action;
