@@ -26,18 +26,7 @@ int main(int argc, char **argv)
 		if (argc == 1)
 			r_getline = getline(&line, &len, stdin);
 		else
-		{
-			//r_getline = getline(&line, &len, input);
-			int i = 0;
-			do {
-				if (read(input, c, 1) == -1)
-					break;
-				printf("read: %c\n", c[0]);
-				buff[i] = c[0];
-			i++;
-			} while (c[0] != '\n');
-			buff[i] = '\0';
-		}
+			r_getline = getlinefromfile(&line, &len, input);
 		if (r_getline == -1)
 			break;
 		parsed_input = parse_input(line);

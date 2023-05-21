@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * getlineFromFile - get line from file descriptor
+ * getlinefromfile - get line from file descriptor
  *@line: where to store line buffer
  *@len: line lenght
  *@file_descriptor: the file
  * Return: int
 */
-int getline(char **line, int *len, int file_descriptor)
+int getlinefromfile(char **line, size_t *len, int file_descriptor)
 {
 	char c[1];
 	char buff[1024];
