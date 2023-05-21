@@ -48,4 +48,6 @@ void free_tokens(char **tokens);
 
 /*free functions*/
 void free_action(_action *action);
+/*file manipulation*/
+int getline(char **line, int *len, int file_descriptor);
 #endif
