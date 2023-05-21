@@ -4,13 +4,13 @@
  *@action: the action to execute
  * Return: 0 to exit or 1
  */
-int execute_action(_action action)
+int execute_action(_action *action)
 {
 	pid_t childpid;
 	int status;
 	char *path;
 
-	path = find_path(args[0]);
+	path = find_path(action->cmd_name);
 
 	childpid = fork();
 	if (childpid == -1) /* if forking fails */

@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 			printf("args[%d] = %s\n", i, action->args[i]);
 		}
 		free_tokens(parsed_input);
-		if (!execute_action(*action))
+		if (!execute_action(action))
 		{
 			free_action(action);
 			break;

@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
+#include<sys/wait.h>
 /**
  * struct s_string - string structure (a way to append multipe strings)
  *@value: string value
@@ -41,7 +42,7 @@ StringList *AppendString(StringList **head, const char *str);
 /*Helper functions*/
 char **parse_input(char *);
 _action *interpret_input(char**);
-int execute_action(_action);
+int execute_action(_action *);
 
 /* handle path */
 char *find_path(char *);

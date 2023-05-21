@@ -24,7 +24,7 @@ int getlinefromfile(char **line, size_t *len, int file_descriptor)
 		buff[i++] = c[0];
 	}
 	*len = i + 1;
-	*line = strdup(buff);
+	*line = _strdup(buff);
 	return n;
 }
 /*
