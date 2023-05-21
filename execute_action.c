@@ -6,8 +6,11 @@
  */
 int execute_action(_action action)
 {
-	pid_t childpid, my_pid;
+	pid_t childpid;
 	int status;
+	char *path;
+
+	path = find_path(args[0]);
 
 	childpid = fork();
 	if (childpid == -1) /* if forking fails */
@@ -17,18 +20,12 @@ int execute_action(_action action)
 	}
 	else if (childpid == 0) /* in the child process */
 	{
-		if (execve(argv[0], action->args, NULL) == -1)
+		if (execve(path, action->args, NULL) == -1)
 			perror("Error:");
 	}
 	else
 	{
 		wait(&status); /* or waitpid(childpid, &status, 0) */
 	}
-	return (0);
+	return (0); /* don't have to handle environment */
 }
-
-	/*char *environ[]={"home=/","git=","PATH=/home:bin/"};
-	pid_t child_pid = fork();
-	if (child_pid == 0)
-	{
-		/*child process*/

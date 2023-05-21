@@ -43,6 +43,9 @@ char **parse_input(char *);
 _action *interpret_input(char**);
 int execute_action(_action);
 
+/* handle path */
+char *find_path(char *);
+
 /* parsing */
 void free_tokens(char **tokens);
 
