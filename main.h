@@ -7,6 +7,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include<sys/wait.h>
+#include <sys/stat.h>
 /**
  * struct s_string - string structure (a way to append multipe strings)
  *@value: string value
@@ -46,7 +47,7 @@ int execute_action(_action *);
 
 /* handle path */
 char *find_path(char *);
-
+int is_exec(char *);
 /* parsing */
 void free_tokens(char **tokens);
 

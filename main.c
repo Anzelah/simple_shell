@@ -19,7 +19,10 @@ int main(int argc, char **argv)
 	char c[2];
 
 	if (argc > 1)
+	{
 		input = open(argv[1], O_RDONLY);
+		printf("test is_exec = %d\n", is_exec(argv[1]));
+	}
 	while (1)
 	{
 		_printf("#cisfun$ ");
