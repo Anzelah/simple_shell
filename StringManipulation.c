@@ -26,11 +26,25 @@ void _printf(char *str)
 }
 /**
  * _strdup - duplicates  string
- *@src:  string
+ *@src: string
  * Return: pointer to the new string
  */
 char *_strdup(char *src)
 {
-	return (strdup(src));
+	char *new_string;
+	int i = 0;
+
+	new_string = malloc(sizeof(char) * _strlen(src) + 1);
+	if (!new_string)
+		return(NULL);
+
+	while (*src)
+	{
+		new_string[i++] = *src++;
+	}
+	new_string[i] = '\0';
+
+	return(new_string);
+	/* return (strdup(src)); */
 }
 
