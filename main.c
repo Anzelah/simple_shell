@@ -14,7 +14,6 @@ int main(int argc, char **argv)
 	char **parsed_input;
 	_action *action;
 	int input, i, j;
-	char buff[1024], c[2];
 
 	if (argc > 1)
 	{
@@ -32,6 +31,7 @@ int main(int argc, char **argv)
 		else
 			r_getline = getlinefromfile(&line, &len, input);
 		if (r_getline == -1)
+			free(line);
 			break;
 		parsed_input = parse_input(line);
 		free(line);

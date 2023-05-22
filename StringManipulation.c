@@ -46,8 +46,7 @@ void _printf(char *str)
 	}
 	new_string[i] = '\0';
 
-	return (new_string);
-	/* return (strdup(src)); */
+	return (new_string); */
 char *_strdup(char *src)
 {
 	return(strdup(src));
