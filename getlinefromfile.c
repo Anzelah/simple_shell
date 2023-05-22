@@ -11,8 +11,10 @@ int getlinefromfile(char **line, size_t *len, int file_descriptor)
 	char c[1];
 	char buff[1024];
 	int n, i;
+
 	buff[0] = '\0';
 	i = 0;
+
 	while (n = read(file_descriptor, c, 1) > 0)
 	{
 
@@ -25,7 +27,7 @@ int getlinefromfile(char **line, size_t *len, int file_descriptor)
 	}
 	*len = i + 1;
 	*line = _strdup(buff);
-	return n;
+	return (n);
 }
 /*
 int main(int argc, char **argv)
