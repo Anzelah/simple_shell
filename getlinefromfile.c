@@ -29,19 +29,3 @@ int getlinefromfile(char **line, size_t *len, int file_descriptor)
 	*line = _strdup(buff);
 	return (n);
 }
-/*
-int main(int argc, char **argv)
-{
-	int f = open("file.txt", O_RDONLY);
-	char *b;
-	int nn, l;
-	do
-	{
-
-		nn = getlineFromFile(&b, &l, f);
-		printf("#%s#", b);
-		free(b);
-	} while (nn > 0);
-	close(f);
-	return (0);
-}*/
