@@ -6,26 +6,21 @@
  *@argv: arguments vectors
  * Return: int
  */
-int main(int argc, char **argv)
+int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
-	size_t len = 0;
-	char *line = NULL;
+	size_t len = 0, j;
+	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
-	char **parsed_input;
-	int j;
 
 	while (1)
 	{
-		if (argc == 1)
-		{	
+		if (isatty(STDIN_FILENO))
 			_printf("#cisfun$ ");
-			line = NULL;
-			r_getline = getline(&line, &len, stdin);
-			for (j = 0; line[j] != '\0' && line[j] != '\n'; j++);
-			line[j] = '\0';
-		}
-		else
-			line = getlineArgv(argc, argv);
+		line = NULL;
+		r_getline = getline(&line, &len, stdin);
+		for (j = 0; line[j] != '\0' && line[j] != '\n'; j++);
+		line[j] = '\0';
+
 		if (r_getline == -1)
 		{
 			free(line);
@@ -38,7 +33,6 @@ int main(int argc, char **argv)
 		}
 		parsed_input = parse_input(line);
 		free(line);
-		/*action = interpret_input(parsed_input);*/
 		if (!execute_action(parsed_input))
 			break;
 		free_tokens(parsed_input);
