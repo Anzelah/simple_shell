@@ -13,10 +13,8 @@ int main(int argc, char **argv)
 	ssize_t r_getline = 0;
 	char **parsed_input;
 	_action *action;
-	int i, j;
-	int input;
-	char buff[1024];
-	char c[2];
+	int input, i, j;
+	char buff[1024], c[2];
 
 	if (argc > 1)
 	{
@@ -38,8 +36,7 @@ int main(int argc, char **argv)
 		parsed_input = parse_input(line);
 		free(line);
 		action = interpret_input(parsed_input);
-		/* testing action*/
-		for (i = 0; action->args[i] != NULL; i++)
+		for (i = 0; action->args[i] != NULL; i++) /* testing action */
 		{
 			printf("args[%d] = %s\n", i, action->args[i]);
 		}

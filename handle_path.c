@@ -2,7 +2,7 @@
 
 /**
  * find_path - handle the path
- * @args: the argument
+ * @argument: the argument
  *
  * Return: the path
  */
@@ -10,10 +10,13 @@
 char *find_path(char *argument)
 {
 	char *envpath = getenv("PATH");
+
 	if (!envpath || _strlen(envpath) == 0)
-	     return NULL;
+		return (NULL);
+
 	char buff[1024];
 	int i = 0, j;
+
 	while (envpath[i] != '\0')
 	{
 		j = 0;
@@ -22,9 +25,10 @@ char *find_path(char *argument)
 		buff[j] = '\0';
 		char *temp = _strcat(buff, "/");
 		char *PathToLookFor = _strcat(temp, argument);
+
 		free(temp);
 		/*printf("searching %s\n", PathToLookFor);*/
-		if(access(PathToLookFor, F_OK) == 0 && is_exec(PathToLookFor))
+		if (access(PathToLookFor, F_OK) == 0 && is_exec(PathToLookFor))
 		{
 			return (PathToLookFor);
 		}
@@ -32,7 +36,7 @@ char *find_path(char *argument)
 			break;
 		i++; /*skiping : character*/
 	}
-return (NULL);
+	return (NULL);
 }
 
 /**
@@ -42,9 +46,11 @@ return (NULL);
  */
 int is_exec(char *path)
 {
-     struct stat state;
-     if (path == NULL || stat(path, &state) < 0)
-	     return 0;
-     if (state.st_mode & S_IXUSR)
-	     return (1);
+	struct stat state;
+
+	if (path == NULL || stat(path, &state) < 0)
+		return (0);
+
+	if (state.st_mode & S_IXUSR)
+		return (1);
 }
