@@ -10,7 +10,6 @@
 char *find_path(char *argument)
 {
 	char *envpath = getenv("PATH");
-	printf("find path executing: %s\npath=%s", argument, envpath);
 	if (!envpath || _strlen(envpath) == 0)
 	     return NULL;
 	char buff[1024];

@@ -36,7 +36,7 @@ unsigned long int _strlen( char *str);
 void _printf(char *str);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
-
+char *_strcat(char *, char *);
 /*linked list manipulation */
 StringList *AppendString(StringList **head, const char *str);
 
