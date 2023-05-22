@@ -36,7 +36,7 @@ char *_strdup(char *src)
 
 	new_string = malloc(sizeof(char) * _strlen(src) + 1);
 	if (!new_string)
-		return(NULL);
+		return (NULL);
 
 	while (*src)
 	{
@@ -44,7 +44,7 @@ char *_strdup(char *src)
 	}
 	new_string[i] = '\0';
 
-	return(new_string);
+	return (new_string);
 	/* return (strdup(src)); */
 }
 
