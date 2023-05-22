@@ -15,7 +15,7 @@ int getlinefromfile(char **line, size_t *len, int file_descriptor)
 	buff[0] = '\0';
 	i = 0;
 
-	while (n = read(file_descriptor, c, 1) > 0)
+	while ((n = read(file_descriptor, c, 1)) > 0)
 	{
 
 		if (c[0] == '\n')

@@ -53,4 +53,6 @@ int is_exec(char *path)
 
 	if (state.st_mode & S_IXUSR)
 		return (1);
+
+	return (0); /* added this */
 }

@@ -24,12 +24,14 @@ void _printf(char *str)
 {
 	write(STDOUT_FILENO, str, _strlen(str));
 }
+
 /**
  * _strdup - duplicates  string
  *@src: string
  * Return: pointer to the new string
  */
-char *_strdup(char *src)
+
+/*char *_strdup(char *src)
 {
 	char *new_string;
 	int i = 0;
@@ -46,5 +48,8 @@ char *_strdup(char *src)
 
 	return (new_string);
 	/* return (strdup(src)); */
+char *_strdup(char *src)
+{
+	return(strdup(src));
 }
 

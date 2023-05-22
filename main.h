@@ -35,7 +35,7 @@ struct s_action
 typedef struct s_action _action;
 
 /*String manipulation*/
-unsigned long int(char *str);
+unsigned long int _strlen(char *str);
 void _printf(char *str);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);

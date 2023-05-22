@@ -26,8 +26,8 @@ int main(int argc, char **argv)
 		if (argc == 1)
 		{
 			r_getline = getline(&line, &len, stdin);
-			for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
-				line[j] = '\0';
+			for (j = 0; line[j] != '\0' && line[j] != '\n'; j++);
+			line[j] = '\0';
 		}
 		else
 			r_getline = getlinefromfile(&line, &len, input);
