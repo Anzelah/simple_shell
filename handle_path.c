@@ -9,6 +9,24 @@
 
 char *find_path(char *argument)
 {
+	char *envpath = getenv("PATH");
+	printf("find path executing: %s\npath=%s", argument, envpath);
+	if (!envpath || _strlen(envpath) == 0)
+	     return NULL;
+	char buff[1024];
+	int i = 0, j;
+	while (envpath[i] != '\0')
+	{
+		j = 0;
+		for (; envpath[i] != '\0' && envpath[i] != ':'; i++, j++)
+			buff[j] = envpath[i];
+		buff[j] = '\0';
+		printf("searching %s in #%s#\n", argument, buff);
+		if (envpath[i] == '\0')
+			break;
+		i++; /*skiping : character*/
+	}
+
 }
 
 /**
