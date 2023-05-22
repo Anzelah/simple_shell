@@ -16,6 +16,17 @@ unsigned long int _strlen(char *str)
 }
 
 /**
+ * _printe - prints a string
+ *@str: the string to print
+ */
+
+void _printe(char *str)
+{
+	write(STDERR_FILENO, str, _strlen(str));
+}
+
+
+/**
  * _printf - prints a string
  *@str: the string to print
  */

@@ -22,32 +22,21 @@ typedef struct s_string
 	struct s_string *next;
 } StringList;
 
-/**
- * struct s_action - action's structure
- *@cmd_name: command's name
- *@args: arguments of the command
- */
-struct s_action
-{
-	char *cmd_name;
-	char **args;
-};
-typedef struct s_action _action;
-
 /*String manipulation*/
 unsigned long int _strlen(char *str);
 void _printf(char *str);
+void _printe(char *);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *, char *);
+char *getlineArgv(int argc, char **argv);
 
 /*linked list manipulation */
 StringList *AppendString(StringList **head, const char *str);
 
 /*Helper functions*/
 char **parse_input(char *);
-_action *interpret_input(char **);
-int execute_action(_action *);
+int execute_action(char **);
 
 /* handle path */
 char *find_path(char *);
@@ -55,11 +44,5 @@ int is_exec(char *);
 
 /* parsing */
 void free_tokens(char **tokens);
-
-/*free functions*/
-void free_action(_action *action);
-
-/*file manipulation*/
-int getlinefromfile(char **line, size_t *len, int file_descriptor);
 
 #endif

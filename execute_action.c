@@ -1,18 +1,36 @@
 #include "main.h"
+extern char **environ;
 /**
  * execute_action - executes action
  *@action: the action to execute
  * Return: 0 to exit or 1
  */
-int execute_action(_action *action)
+int execute_action(char **action)
 {
 	pid_t childpid;
 	int status;
-	char *path;
+	char *path = NULL;
+	int i;
 
-	printf("command name = #%s#\n", action->cmd_name);
-	path = find_path(action->cmd_name);
-
+	if (strcmp(action[0], "exit") == 0)
+		return (0);
+	if (strcmp(action[0], "env") == 0)
+	{
+		/*to do*/
+		for (i = 0; environ[i] != NULL; i++)
+		{
+		_printf(environ[i]);
+		_printf("\n");
+		}
+		return (1);
+	}
+	path = find_path(action[0]);
+        if (path == NULL)
+	{
+		perror(action[0]);
+		/*_printe(": command not found\n");*/
+		return (1);
+	}
 	childpid = fork();
 	if (childpid == -1) /* if forking fails */
 	{
@@ -21,12 +39,12 @@ int execute_action(_action *action)
 	}
 	else if (childpid == 0) /* in the child process */
 	{
-		if (execve(path, action->args, NULL) == -1)
+		if (execve(path, action, environ) == -1)
 			perror("Error:");
 	}
 	else
 	{
 		wait(&status); /* or waitpid(childpid, &status, 0) */
 	}
-	return (0); /* don't have to handle environment */
+	return (1); /* don't have to handle environment */
 }

@@ -12,40 +12,31 @@ int main(int argc, char **argv)
 	char *line = NULL;
 	ssize_t r_getline = 0;
 	char **parsed_input;
-	_action *action;
-	int input, i, j;
+	int j;
 
-	if (argc > 1)
-	{
-		input = open(argv[1], O_RDONLY);
-	}
 	while (1)
 	{
 		_printf("#cisfun$ ");
 		if (argc == 1)
 		{
+			line = NULL;
 			r_getline = getline(&line, &len, stdin);
 			for (j = 0; line[j] != '\0' && line[j] != '\n'; j++);
 			line[j] = '\0';
 		}
 		else
-			r_getline = getlinefromfile(&line, &len, input);
+			line = getlineArgv(argc, argv);
 		if (r_getline == -1)
+		{
 			free(line);
 			break;
+		}
 		parsed_input = parse_input(line);
 		free(line);
-		action = interpret_input(parsed_input);
-		for (i = 0; action->args[i] != NULL; i++) /* testing action */
-		{
-			printf("args[%d] = %s\n", i, action->args[i]);
-		}
-		free_tokens(parsed_input);
-		if (!execute_action(action))
-		{
-			free_action(action);
+		/*action = interpret_input(parsed_input);*/
+		if (!execute_action(parsed_input))
 			break;
-		}
+		free_tokens(parsed_input);
 	}
 	return (0);
 }

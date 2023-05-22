@@ -11,13 +11,14 @@ char *find_path(char *argument)
 {
 	char buff[1024];
 	int i = 0, j;
-	char *temp = _strcat(buff, "/");
-	char *PathToLookFor = _strcat(temp, argument);
-
+	char *temp = NULL, *PathToLookFor = NULL;
 	char *envpath = getenv("PATH");
 
+	free(temp);
 	if (!envpath || _strlen(envpath) == 0)
+	{
 		return (NULL);
+	}
 
 	while (envpath[i] != '\0')
 	{
@@ -25,10 +26,10 @@ char *find_path(char *argument)
 		for (; envpath[i] != '\0' && envpath[i] != ':'; i++, j++)
 			buff[j] = envpath[i];
 		buff[j] = '\0';
-
+		temp = _strcat(buff, "/");
+		PathToLookFor = _strcat(temp, argument);
 		free(temp);
-		/*printf("searching %s\n", PathToLookFor);*/
-		if (access(PathToLookFor, F_OK) == 0 && is_exec(PathToLookFor))
+		if (is_exec(PathToLookFor) && access(PathToLookFor, F_OK) == 0)
 		{
 			return (PathToLookFor);
 		}
