@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	ssize_t r_getline = 0;
 	char **parsed_input;
 	_action *action;
-	int i;
+	int i, j;
 	int input;
 	char buff[1024];
 	char c[2];
@@ -21,13 +21,16 @@ int main(int argc, char **argv)
 	if (argc > 1)
 	{
 		input = open(argv[1], O_RDONLY);
-		printf("test is_exec = %d\n", is_exec(argv[1]));
 	}
 	while (1)
 	{
 		_printf("#cisfun$ ");
 		if (argc == 1)
+		{
 			r_getline = getline(&line, &len, stdin);
+			for (j = 0; line[j] != '\0' && line[j] != '\n'; j++);
+			line[j] = '\0';
+		}
 		else
 			r_getline = getlinefromfile(&line, &len, input);
 		if (r_getline == -1)

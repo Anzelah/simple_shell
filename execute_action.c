@@ -10,6 +10,7 @@ int execute_action(_action *action)
 	int status;
 	char *path;
 
+	printf("command name = #%s#\n", action->cmd_name);
 	path = find_path(action->cmd_name);
 
 	childpid = fork();
