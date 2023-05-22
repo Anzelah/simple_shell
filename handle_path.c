@@ -20,12 +20,19 @@ char *find_path(char *argument)
 		for (; envpath[i] != '\0' && envpath[i] != ':'; i++, j++)
 			buff[j] = envpath[i];
 		buff[j] = '\0';
-		printf("searching %s in #%s#\n", argument, buff);
+		char *temp = _strcat(buff, "/");
+		char *PathToLookFor = _strcat(temp, argument);
+		free(temp);
+		/*printf("searching %s\n", PathToLookFor);*/
+		if(access(PathToLookFor, F_OK) == 0 && is_exec(PathToLookFor))
+		{
+			return (PathToLookFor);
+		}
 		if (envpath[i] == '\0')
 			break;
 		i++; /*skiping : character*/
 	}
-
+return (NULL);
 }
 
 /**
