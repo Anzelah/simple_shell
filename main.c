@@ -16,9 +16,9 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
-		_printf("#cisfun$ ");
 		if (argc == 1)
-		{
+		{	
+			_printf("#cisfun$ ");
 			line = NULL;
 			r_getline = getline(&line, &len, stdin);
 			for (j = 0; line[j] != '\0' && line[j] != '\n'; j++);
@@ -30,6 +30,11 @@ int main(int argc, char **argv)
 		{
 			free(line);
 			break;
+		}
+		if (_strlen(line) == 0)
+		{
+			free(line);
+			continue;
 		}
 		parsed_input = parse_input(line);
 		free(line);
