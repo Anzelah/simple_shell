@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd.h>
 extern char **environ;
 /**
  * execute_action - executes action
@@ -11,12 +12,12 @@ int execute_action(char **action)
 	int status;
 	char *path = NULL;
 	int i;
+	/*char **environi; */
 
 	if (strcmp(action[0], "exit") == 0)
 		return (0);
 	if (strcmp(action[0], "env") == 0)
 	{
-		/*to do*/
 		for (i = 0; environ[i] != NULL; i++)
 		{
 		_printf(environ[i]);
@@ -25,7 +26,7 @@ int execute_action(char **action)
 		return (1);
 	}
 	path = find_path(action[0]);
-        if (path == NULL)
+	if (path == NULL)
 	{
 		perror(action[0]);
 		/*_printe(": command not found\n");*/

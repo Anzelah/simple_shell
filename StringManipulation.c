@@ -42,8 +42,8 @@ void _printf(char *str)
  * Return: pointer to the new string
  */
 
-/*char *_strdup(char *src)
-{
+/*char *_strdup(char *src) */
+/*{
 	char *new_string;
 	int i = 0;
 
@@ -55,11 +55,11 @@ void _printf(char *str)
 	{
 		new_string[i++] = *src++;
 	}
-	new_string[i] = '\0';
+	new_string[i] = '\0'; */
 
-	return (new_string); */
+	/* return (new_string); */
 char *_strdup(char *src)
 {
-	return(strdup(src));
+	return (strdup(src));
 }
 

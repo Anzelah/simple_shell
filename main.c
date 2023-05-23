@@ -18,7 +18,9 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 			_printf("#cisfun$ ");
 		line = NULL;
 		r_getline = getline(&line, &len, stdin);
-		for (j = 0; line[j] != '\0' && line[j] != '\n'; j++);
+		for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
+		{ /* for betty */
+		}
 		line[j] = '\0';
 
 		if (r_getline == -1)
