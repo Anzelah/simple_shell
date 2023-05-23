@@ -64,7 +64,7 @@ char *_strdup(char *src)
  * _strcmp - compare two strings
  * @s1: first string
  * @s2: second string
- * Return: new string
+ * Return: 1, -1, or 0
  */
 int _strcmp(char *s1, char *s2)
 {
@@ -84,9 +84,3 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (0);
 }
-
-/*char *_strdup(char *src)
-{
-	return (strdup(src));
-} */
-

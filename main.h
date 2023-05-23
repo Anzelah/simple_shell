@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include<sys/wait.h>
 #include <sys/stat.h>
+extern char **environ;
 
 /**
  * struct s_string - string structure (a way to append multipe strings)

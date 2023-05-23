@@ -1,6 +1,5 @@
 #include "main.h"
-#include <unistd.h>
-extern char **environ;
+
 /**
  * execute_action - executes action
  *@action: the action to execute
@@ -12,7 +11,7 @@ int execute_action(char **action)
 	int status;
 	char *path = NULL;
 	int i;
-	/*char **environi; */
+	/* extern char **environ; */
 
 	if (_strcmp(action[0], "exit") == 0)
 		return (0);
