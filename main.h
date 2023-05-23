@@ -32,7 +32,7 @@ char *_strcat(char *, char *);
 char *getlineArgv(int argc, char **argv);
 
 /*linked list manipulation */
-StringList *AppendString(StringList **head, const char *str);
+StringList *AppendString(StringList **head, char *str); /* remove const */
 
 /*Helper functions*/
 char **parse_input(char *);

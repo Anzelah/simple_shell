@@ -7,7 +7,7 @@
  *@str: string value
  *Return: new element
  */
-StringList *AppendString(StringList **head, const char *str)
+StringList *AppendString(StringList **head, char *str)
 {
 	unsigned int len = 0;
 	StringList *new = malloc(sizeof(StringList));
@@ -20,7 +20,7 @@ StringList *AppendString(StringList **head, const char *str)
 		len++;
 	while (t && t->next != NULL)
 		t = t->next;
-	new->value = strdup(str);
+	new->value = _strdup(str);
 	new->len = len;
 	new->next = NULL;
 
