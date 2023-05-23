@@ -45,6 +45,7 @@ int execute_action(char **action)
 	else
 	{
 		wait(&status); /* or waitpid(childpid, &status, 0) */
+		free(path);
 	}
 	return (1); /* don't have to handle environment */
 }

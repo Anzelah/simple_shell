@@ -14,7 +14,6 @@ char *find_path(char *argument)
 	char *temp = NULL, *PathToLookFor = NULL;
 	char *envpath = _getenv("PATH");
 
-	free(temp);
 	if (!envpath || _strlen(envpath) == 0)
 	{
 		return (NULL);
@@ -34,7 +33,11 @@ char *find_path(char *argument)
 			return (PathToLookFor);
 		}
 		if (envpath[i] == '\0')
-			break;
+			{
+				free(PathToLookFor);
+				break;
+			}
+		free(PathToLookFor);
 		i++; /*skiping : character*/
 	}
 	return (NULL);
