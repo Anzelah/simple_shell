@@ -36,8 +36,10 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		parsed_input = parse_input(line);
 		free(line);
 		if (!execute_action(parsed_input))
+		{
+			free_tokens(parsed_input);
 			break;
-		free_tokens(parsed_input);
+		}
 	}
 	return (0);
 }

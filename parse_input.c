@@ -37,7 +37,10 @@ char **parse_input(char *str)
 
 	src = _strdup(str);
 	if (src == NULL)
+	{
+		free(src);
 		return (NULL);
+	}
 	parsed = strtok(str, delim);
 	while (parsed != NULL)
 	{
