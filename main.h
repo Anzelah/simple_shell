@@ -42,6 +42,7 @@ int execute_action(char **);
 /* handle path */
 char *find_path(char *);
 int is_exec(char *);
+char *_getenv(char *nm);
 
 /* parsing */
 void free_tokens(char **tokens);

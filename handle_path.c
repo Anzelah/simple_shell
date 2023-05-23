@@ -12,7 +12,7 @@ char *find_path(char *argument)
 	char buff[1024];
 	int i = 0, j;
 	char *temp = NULL, *PathToLookFor = NULL;
-	char *envpath = getenv("PATH");
+	char *envpath = _getenv("PATH");
 
 	free(temp);
 	if (!envpath || _strlen(envpath) == 0)
