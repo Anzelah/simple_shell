@@ -33,10 +33,10 @@ char *find_path(char *argument)
 			return (PathToLookFor);
 		}
 		if (envpath[i] == '\0')
-			{
-				free(PathToLookFor);
-				break;
-			}
+		{
+			free(PathToLookFor);
+			break;
+		}
 		free(PathToLookFor);
 		i++; /*skiping : character*/
 	}
