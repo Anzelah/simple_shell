@@ -32,6 +32,23 @@ char *_strstr(char *haystack, char *needle)
 	return (NULL);
 }
 /**
+ * _strncpy - copy n string from src to dest
+ *@dest: destination string
+ *@src: source string
+ *@n: number of bytes to copy
+ * Return: dest
+ */
+char *_strncpy(char *dest, char *src, int n)
+{
+	int i;
+
+	for (i = 0; i < n && src[i] != '\0'; i++)
+		dest[i] = src[i];
+	for ( ; i < n; i++)
+		dest[i] = '\0';
+	return (dest);
+}
+/**
  * _getenv - similar as getenv
  * @nm: name to search
  * Return: char*
@@ -43,7 +60,7 @@ char *_getenv(char *nm)
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (strncmp(nm, environ[i], strlen(nm)) == 0)
+		if (_strncmp(nm, environ[i], strlen(nm)) == 0)
 		{
 			r = _strstr(environ[i], "=");
 			r++;
