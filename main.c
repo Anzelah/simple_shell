@@ -10,6 +10,13 @@ void non_interactive(void)
         char *line = NULL, **parsed_input;
         ssize_t r_getline = 0;
 	
+
+	if ((r_getline = getline(&line, &len, stdin)) == -1)
+	{
+                free(line);
+                exit(0);
+        }
+
 	while ((r_getline = getline(&line, &len, stdin)) != -1)
 	{
 	       	if (check_blanks(line) || _strlen(line) == 0)
@@ -32,6 +39,8 @@ void non_interactive(void)
                 }
                 free_tokens(parsed_input);
 	}
+
+
 }
 
 /**
