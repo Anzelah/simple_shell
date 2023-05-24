@@ -41,10 +41,6 @@ char **parse_input(char *str)
 	parsed = strtok(str, delim);
 	while (parsed != NULL)
 	{
-		if (parsed[0] == '#')
-		{
-			break;
-		}
 		count_tokens++;
 		parsed = strtok(NULL, delim);
 	}
