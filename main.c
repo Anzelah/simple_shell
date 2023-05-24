@@ -21,6 +21,11 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		}
 		line = NULL;
 		r_getline = getline(&line, &len, stdin);
+		if (r_getline == -1)
+		{
+			free(line);
+			exit(0);
+		}
 		if (check_blanks(line))
 		{
 			free(line);
@@ -32,11 +37,7 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 				break;
 		line[j] = '\0';
 		}
-		if (r_getline == -1)
-		{
-			free(line);
-			exit(1);
-		}
+
 		if (_strlen(line) == 0)
 		{
 			free(line);
