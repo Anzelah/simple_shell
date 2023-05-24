@@ -32,8 +32,6 @@ void non_interactive(void)
                 }
                 free_tokens(parsed_input);
 	}
-
-
 }
 
 /**
