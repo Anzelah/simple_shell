@@ -45,5 +45,6 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		}
 		free_tokens(parsed_input);
 	}
+	free(line);
 	return (0);
 }
