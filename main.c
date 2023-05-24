@@ -8,25 +8,25 @@
  *@argv: arguments vectors
  * Return: int
  */
-int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
+int main(void)
 {
 	size_t len = 0, j;
 	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
+	int status = 1;
 
-	signal(SIGINT, ctrl_c);
-	while (1)
+	/*signal(SIGINT, ctrl_c);*/
+	do
 	{
 		if (isatty(STDIN_FILENO))
 		{
 			_printf("$ ");
 		}
-		line = NULL;
 		r_getline = getline(&line, &len, stdin);
 		if (r_getline == -1)
 		{
 			free(line);
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 		if (check_blanks(line) || _strlen(line) == 0)
 		{
@@ -41,13 +41,12 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		}
 		parsed_input = parse_input(line);
 		free(line);
-		if (!execute_action(parsed_input))
-		{
+		status = execute_action(parsed_input);
+		/*{
 			free_tokens(parsed_input);
 			break;
-		}
+		}*/
 		free_tokens(parsed_input);
-	}
+	} while (status);
 	return (0);
-}
-		
+}	
