@@ -40,7 +40,7 @@ int check_blanks(char *str)
 {
 	int i, index = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; str && str[i] != '\0'; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\t')
 		{

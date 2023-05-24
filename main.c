@@ -42,7 +42,9 @@ int main(void)
 		parsed_input = parse_input(line);
 		free(line);
 		status = execute_action(parsed_input);
-		/*{
+		/*
+		if (!execute_action(parsed_input))
+		{
 			free_tokens(parsed_input);
 			break;
 		}*/
