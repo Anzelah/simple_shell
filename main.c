@@ -34,7 +34,6 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		for (j = _strlen(line) - 1; j > 0; j--)/* check for empty spaces. Easier to check from end of file */
 		{
 			if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
-				free(line);
 				break;
 		line[j] = '\0';
 		}
