@@ -44,13 +44,10 @@ int main(void)
 	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
 
-	signal(SIGINT, ctrl_c);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-		{
 			_printf("$ ");
-		}
 		else
 		{
 			non_interactive();
