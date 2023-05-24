@@ -32,13 +32,16 @@ int execute_action(char **action)
 	if (childpid == -1) /* if forking fails */
 	{
 		perror("Error:");
+		free(path); /*added this */
 		return (1);
 	}
 	else if (childpid == 0) /* in the child process */
 	{
 		if (execve(path, action, environ) == -1)
+		{
 			perror("Error:");
-		exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
