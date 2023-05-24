@@ -51,10 +51,10 @@ int check_blanks(char *str)
 }
 
 /**
- * check_signal - handle the ctrl c signal
+ * ctrl_c - handle the ctrl c signal
  * @sig: parameter
  */
-void check_signal(int sig __attribute__((unused)))
+void ctrl_c(int sig __attribute__((unused)))
 {
 	exit (0);
 }
