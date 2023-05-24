@@ -56,5 +56,5 @@ int check_blanks(char *str)
  */
 void ctrl_c(int sig __attribute__((unused)))
 {
-	exit (0);
+	exit(0);
 }
