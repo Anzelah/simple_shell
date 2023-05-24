@@ -23,10 +23,6 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		}
 		else
 		{
-			line = NULL;
-			r_getline = getline(&line, &len, stdin);
-			execute_action(parse_input(line));
-			free(line);
 		}
 		line = NULL;
 		r_getline = getline(&line, &len, stdin);
