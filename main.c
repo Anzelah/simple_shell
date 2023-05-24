@@ -11,7 +11,8 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 	size_t len = 0, j;
 	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
-
+	
+	signal(SIGINT, check_signal);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))

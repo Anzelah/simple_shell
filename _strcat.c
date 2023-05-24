@@ -49,3 +49,13 @@ int check_blanks(char *str)
 	}
 	return (index);
 }
+
+/**
+ * check_signal - handle the signal
+ * @signum: the signal parameter
+ */
+
+void check_signal(int signum __attribute__((unused)))
+{
+	exit(0);
+}

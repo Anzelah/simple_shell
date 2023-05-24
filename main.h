@@ -50,5 +50,6 @@ void free_tokens(char **tokens);
 
 /* empty inputs */
 int check_blanks(char *);
-
+/* sigal */
+void check_signal(int signum __attribute__((unused)));
 #endif
