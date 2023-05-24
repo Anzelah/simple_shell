@@ -34,7 +34,12 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		{
 			if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
 				break;
+		}
 		line[j] = '\0';
+		if (_strlen(line) == 0)
+		{
+			free(line);
+			continue;
 		}
 		parsed_input = parse_input(line);
 		free(line);
@@ -47,3 +52,4 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 	}
 	return (0);
 }
+		
