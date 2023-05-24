@@ -26,7 +26,10 @@ char *find_path(char *argument)
 			buff[j] = envpath[i];
 		buff[j] = '\0';
 		temp = _strcat(buff, "/");
-		PathToLookFor = _strcat(temp, argument);
+		if (_strstr(argument, "/") != NULL)
+			PathToLookFor = _strdup(argument);
+		else
+			PathToLookFor = _strcat(temp, argument);
 		free(temp);
 		if (is_exec(PathToLookFor) && access(PathToLookFor, F_OK) == 0)
 		{

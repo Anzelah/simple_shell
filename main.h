@@ -32,6 +32,7 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, int);
 char *_strcat(char *, char *);
 char *getlineArgv(int argc, char **argv);
+char *_strstr(char *haystack, char *needle);
 /*linked list manipulation */
 StringList *AppendString(StringList **head, char *str); /* remove const */
 
