@@ -29,10 +29,9 @@ void _printf(char *str);
 void _printe(char *);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
+int _strncmp(char *s1, char *s2, int);
 char *_strcat(char *, char *);
 char *getlineArgv(int argc, char **argv);
-char *_strncpy(char *dest, char *src, int n);
-
 /*linked list manipulation */
 StringList *AppendString(StringList **head, char *str); /* remove const */
 

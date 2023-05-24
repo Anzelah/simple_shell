@@ -32,21 +32,26 @@ char *_strstr(char *haystack, char *needle)
 	return (NULL);
 }
 /**
- * _strncpy - copy n string from src to dest
- *@dest: destination string
- *@src: source string
- *@n: number of bytes to copy
- * Return: dest
+ * _strncmp - compares two strings
+ *@s1: first string
+ *@s2: second string
+ *@n: length
+ * Return: 0 if equal, an other integer if not
  */
-char *_strncpy(char *dest, char *src, int n)
+int _strncmp(char *s1, char *s2, int n)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
-		dest[i] = src[i];
-	for ( ; i < n; i++)
-		dest[i] = '\0';
-	return (dest);
+	while (1)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		else if (s1[i] == '\0' && s2[i] == '\0')
+			return (0);
+		i++;
+		if(i >= n)
+		return (0);
+	}
 }
 /**
  * _getenv - similar as getenv
@@ -60,7 +65,7 @@ char *_getenv(char *nm)
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (_strncmp(nm, environ[i], strlen(nm)) == 0)
+		if (_strncmp(nm, environ[i],_strlen(nm)) == 0)
 		{
 			r = _strstr(environ[i], "=");
 			r++;
