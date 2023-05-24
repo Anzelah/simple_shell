@@ -49,3 +49,12 @@ int check_blanks(char *str)
 	}
 	return (index);
 }
+
+/**
+ * check_signal - handle the ctrl c signal
+ * @sig: parameter
+ */
+void check_signal(int sig __attribute__((unused)))
+{
+	exit (0);
+}
