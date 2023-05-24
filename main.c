@@ -35,7 +35,7 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		if (r_getline == -1)
 		{
 			free(line);
-			break;
+			exit(0);
 		}
 		if (_strlen(line) == 0)
 		{
