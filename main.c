@@ -21,9 +21,6 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 		{
 			_printf("$ ");
 		}
-		else
-		{
-		}
 		line = NULL;
 		r_getline = getline(&line, &len, stdin);
 		if (r_getline == -1)
