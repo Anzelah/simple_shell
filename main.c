@@ -31,13 +31,13 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 			free(line);
 			continue;
 		}
-		for (j = _strlen(line) - 1; j > 0; j--)
+		for (j = _strlen(line) - 1; j > 0; j--)/* check for empty spaces. Easier to check from end of file */
 		{
 			if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
+				free(line);
 				break;
 		line[j] = '\0';
 		}
-
 		if (_strlen(line) == 0)
 		{
 			free(line);
