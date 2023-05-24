@@ -12,9 +12,7 @@ int execute_action(char **action)
 	char *path = NULL;
 
 	if (_strcmp(action[0], "exit") == 0)
-	{
 		return (0);
-	}
 	if (_strcmp(action[0], "env") == 0)
 	{
 		for (i = 0; environ[i] != NULL; i++)
@@ -25,7 +23,6 @@ int execute_action(char **action)
 	if (path == NULL)
 	{
 		perror(action[0]);
-		/*_printe(": command not found\n");*/
 		return (1);
 	}
 	childpid = fork();
