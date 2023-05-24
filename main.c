@@ -25,7 +25,7 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 			free(line);
 			exit(0);
 		}
-		if (check_blanks(line))
+		if (check_blanks(line) || _strlen(line) == 0)
 		{
 			free(line);
 			continue;
@@ -35,11 +35,6 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 			if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
 				break;
 		line[j] = '\0';
-		}
-		if (_strlen(line) == 0)
-		{
-			free(line);
-			continue;
 		}
 		parsed_input = parse_input(line);
 		free(line);
