@@ -14,6 +14,7 @@ void non_interactive(void)
 	{
 	       	if (check_blanks(line) || _strlen(line) == 0)
                 {
+			free(line);
                         continue;
                 }
                 for (j = _strlen(line) - 1; j > 0; j--)/* check for empty space */
@@ -23,11 +24,14 @@ void non_interactive(void)
                 line[j] = '\0';
                 }
                 parsed_input = parse_input(line);
-                execute_action(parsed_input);
-
-		free_tokens(parsed_input);
+                free(line);
+		if (!execute_action(parsed_input))
+                {
+                        free_tokens(parsed_input);
+                        break;
+                }
+                free_tokens(parsed_input);
 	}
-	free(line);
 }
 
 /**
@@ -41,14 +45,13 @@ int main(void)
 	size_t len = 0, j;
 	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
-	int status = 1;
 
 	/*signal(SIGINT, ctrl_c);*/
 	if (!isatty(STDIN_FILENO))
 	{
 		non_interactive();
 	}
-	do
+	while (1)
 	{
 		_printf("$ ");
 		r_getline = getline(&line, &len, stdin);
@@ -70,16 +73,12 @@ int main(void)
 		}
 		parsed_input = parse_input(line);
 		free(line);
-		status = execute_action(parsed_input);
-		/*
 		if (!execute_action(parsed_input))
 		{
 			free_tokens(parsed_input);
 			break;
-		}*/
+		}	
 		free_tokens(parsed_input);
-	} while (status);
-
-	free(line);
+	}
 	return (0);
 }	
