@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include<sys/wait.h>
 #include <sys/stat.h>
+#include <signal.h>
 extern char **environ;
 
 /**
@@ -46,5 +47,8 @@ int is_exec(char *);
 char *_getenv(char *nm);
 /* parsing */
 void free_tokens(char **tokens);
+
+/* empty inputs */
+int check_blanks(char *);
 
 #endif

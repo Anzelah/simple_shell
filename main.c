@@ -11,18 +11,27 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 	size_t len = 0, j;
 	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
+	int interactive = isatty(STDIN_FILENO);
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
-			_printf("#cisfun$ ");
+		if (interactive)
+		{
+			_printf("$ ");
+		}
 		line = NULL;
 		r_getline = getline(&line, &len, stdin);
-		for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
-		{ /* for betty */
+		if (check_blanks(line))
+		{
+			free(line);
+			continue;
 		}
+		for (j = _strlen(line) - 1; j > 0; j--)
+		{
+			if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
+				break;
 		line[j] = '\0';
-
+		}
 		if (r_getline == -1)
 		{
 			free(line);

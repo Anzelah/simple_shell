@@ -29,3 +29,23 @@ char *_strcat(char *s1, char *s2)
 	array[i] = '\0';
 	return (array);
 }
+
+/**
+ * check_blanks - handle empty inputs i.e. tabs and empty spaces
+ * @str: string to check
+ * Return: 1 on successi and 0 if there are no blanks
+ */
+
+int check_blanks(char *str)
+{
+	int i, index = 0;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == ' ' || str[i] == '\t')
+		{
+			index++;
+		}
+	}
+	return (index);
+}
