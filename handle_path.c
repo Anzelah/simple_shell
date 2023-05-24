@@ -27,7 +27,7 @@ char *find_path(char *argument)
 		buff[j] = '\0';
 
 		temp = _strcat(buff, "/");
-		if (_strstr(argument, "/") != NULL)
+		if (strstr(argument, "/") != NULL)
 			PathToLookFor = _strdup(argument);
 		else
 			PathToLookFor = _strcat(temp, argument);
