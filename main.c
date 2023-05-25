@@ -44,19 +44,20 @@ int main(void)
 	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
 
+	if (isatty(STDIN_FILENO) == 1)
+		_printf("$ ");
+	else
+	{
+		non_interactive();
+	}
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
-			_printf("$ ");
-		else
-		{
-			non_interactive();
-		}
 		r_getline = getline(&line, &len, stdin);
 		if (r_getline == -1)
 		{
 			free(line);
-			exit(EXIT_SUCCESS);
+			/* exit(EXIT_SUCCESS);*/
+			return (0);
 		}
 		if (check_blanks(line) || _strlen(line) == 0)
 		{
