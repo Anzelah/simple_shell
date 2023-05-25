@@ -11,11 +11,6 @@ int execute_action(char **action)
 	int status, i;
 	char *path = NULL;
 
-	printf("execute_action\n");
-	for (i = 0; action[i] != NULL; i++)
-	{
-		printf("argv[%d] =%s\n", i, action[i]);
-	}
 	if (_strcmp(action[0], "exit") == 0)
 		return (0);
 	if (_strcmp(action[0], "env") == 0)
