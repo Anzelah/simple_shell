@@ -25,8 +25,9 @@ char *find_path(char *argument)
 		for (; envpath[i] != '\0' && envpath[i] != ':'; i++, j++)
 			buff[j] = envpath[i];
 		buff[j] = '\0';
+
 		temp = _strcat(buff, "/");
-		if (_strstr(argument, "/") != NULL)
+		if (strstr(argument, "/") != NULL)
 			PathToLookFor = _strdup(argument);
 		else
 			PathToLookFor = _strcat(temp, argument);
@@ -41,7 +42,7 @@ char *find_path(char *argument)
 			break;
 		}
 		free(PathToLookFor);
-		i++; /*skiping : character*/
+		i++;
 	}
 	return (NULL);
 }
