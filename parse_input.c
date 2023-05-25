@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * free_tokens - free memory allocated to individual arrays
@@ -28,7 +31,7 @@ char **parse_input(char *str)
 	char *parsed;
 	char **tokens; /* this is an array */
 	char *src; /* hold our string on heap*/
-	char *delim = " \n";
+	char *delim = " ";
 	int length = 0;
 	int count_tokens = 0;
 
@@ -38,7 +41,7 @@ char **parse_input(char *str)
 		free(src);
 		return (NULL);
 	}
-	parsed = strtok(src, delim);/* from str to src*/
+	parsed = strtok(str, delim);
 	while (parsed != NULL)
 	{
 		count_tokens++;

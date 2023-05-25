@@ -34,6 +34,7 @@ int _strncmp(char *s1, char *s2, int);
 char *_strcat(char *, char *);
 char *getlineArgv(int argc, char **argv);
 char *_strstr(char *haystack, char *needle);
+char *removeWhiteBorders(char *s);
 /*linked list manipulation */
 StringList *AppendString(StringList **head, char *str); /* remove const */
 
@@ -47,7 +48,6 @@ int is_exec(char *);
 char *_getenv(char *nm);
 /* parsing */
 void free_tokens(char **tokens);
-
 /* empty inputs */
 int check_blanks(char *);
 /* sigal */

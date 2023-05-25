@@ -1,82 +1,41 @@
 #include "main.h"
 
 /**
- * non_interactive - to execute non-interactive mode
- *
- */
-void non_interactive(void)
-{
-	size_t len = 0, j;
-	char *line = NULL, **parsed_input;
-	ssize_t r_getline = 0;
-
-	while ((r_getline = getline(&line, &len, stdin)) != -1)
-	{
-		if (check_blanks(line) || _strlen(line) == 0)
-		{
-			free(line);
-			continue;
-		}
-		for (j = _strlen(line) - 1; j > 0; j--)/* check for empty space */
-		{
-			if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
-				break;
-			line[j] = '\0';
-		}
-		parsed_input = parse_input(line);
-		free(line);
-		if (!execute_action(parsed_input))
-		{
-			free_tokens(parsed_input);
-			break;
-		}
-		free_tokens(parsed_input);
-	}
-}
-
-/**
  * main - entry point
+ *@argc: arguments count
+ *@argv: arguments vectors
  * Return: int
  */
-int main(void)
+int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
 	size_t len = 0, j;
-	char *line = NULL, **parsed_input;
+	char *line_temp = NULL, *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
 
 	while (1)
 	{
-		line = NULL;
-		if (isatty(STDIN_FILENO) == 1)
+		if (isatty(STDIN_FILENO))
 			_printf("$ ");
-		else
-		{
-			non_interactive();
+		line = NULL;
+		line_temp = NULL;
+		r_getline = getline(&line_temp, &len, stdin);
+
+		for (j = 0; line_temp[j] != '\0' && line_temp[j] != '\n'; j++)
+		{ /* for betty */
 		}
-		r_getline = getline(&line, &len, stdin);
+		line_temp[j] = '\0';
+		line = removeWhiteBorders(line_temp);
+		free(line_temp);
 		if (r_getline == -1)
 		{
 			free(line);
-			/* exit(EXIT_SUCCESS);*/
-			return (0);
+			break;
 		}
 		if (check_blanks(line) || _strlen(line) == 0)
 		{
 			free(line);
 			continue;
 		}
-		for (j = _strlen(line) - 1; j > 0; j--)/* check for empty space */
-		{
-			if (check_blanks(line))
-			{
-				for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
-				{
-				}
-			}
-			break;
-		}
-		line[j] = '\0';
-		
 		parsed_input = parse_input(line);
 		free(line);
 		if (!execute_action(parsed_input))
