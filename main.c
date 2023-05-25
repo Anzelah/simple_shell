@@ -66,8 +66,13 @@ int main(void)
 		}
 		for (j = _strlen(line) - 1; j > 0; j--)/* check for empty space */
 		{
-			if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
-				break;
+			if (check_blanks(line))
+			{
+				for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
+				{
+				}
+			}
+			break;
 		}
 		line[j] = '\0';
 		

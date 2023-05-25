@@ -28,9 +28,7 @@ int execute_action(char **action)
 	childpid = fork();
 	if (childpid == -1) /* if forking fails */
 	{	
-		_printf("Before fork");
 		perror("Error:");
-		/*free(path); */ /*added this */
 	}
 	else if (childpid == 0) /* in the child process */
 	{
