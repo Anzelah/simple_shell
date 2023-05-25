@@ -59,7 +59,7 @@ int main(void)
 			free(line);
 			return (0);
 		}
-		if (_strlen(line) == 0)
+		if (check_blanks(line) == _strlen(line) || _strlen(line) == 0)
 		{
 			free(line);
 			continue;
