@@ -52,14 +52,11 @@ int main(void)
 		if (isatty(STDIN_FILENO) == 1)
 			_printf("$ ");
 		else
-		{
 			non_interactive();
-		}
 		r_getline = getline(&line, &len, stdin);
 		if (r_getline == -1)
 		{
 			free(line);
-			/* exit(EXIT_SUCCESS);*/
 			return (0);
 		}
 		if (_strlen(line) == 0)
@@ -72,8 +69,7 @@ int main(void)
 			if (check_blanks(line))
 			{
 				for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
-				{
-				}
+				line[j];
 			}
 			break;
 		}
