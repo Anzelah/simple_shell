@@ -28,7 +28,7 @@ char **parse_input(char *str)
 	char *parsed;
 	char **tokens; /* this is an array */
 	char *src; /* hold our string on heap*/
-	char *delim = " \n";
+	char *delim = " ";
 	int length = 0;
 	int count_tokens = 0;
 
@@ -38,14 +38,13 @@ char **parse_input(char *str)
 		free(src);
 		return (NULL);
 	}
-	parsed = strtok(src, delim);/* from str to src*/
+	parsed = strtok(str, delim);/* from str to src*/
 	while (parsed != NULL)
 	{
 		count_tokens++;
 		parsed = strtok(NULL, delim);
 	}
 	count_tokens++;
-
 	tokens = malloc(sizeof(char *) * count_tokens);
 	if (tokens == NULL)
 	{
