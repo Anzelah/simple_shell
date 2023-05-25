@@ -12,7 +12,7 @@ void non_interactive(void)
 
 	while ((r_getline = getline(&line, &len, stdin)) != -1)
 	{
-		if (check_blanks(line) || _strlen(line) == 0)
+		if (_strlen(line) == 0)
 		{
 			free(line);
 			line = NULL;
@@ -62,7 +62,7 @@ int main(void)
 			/* exit(EXIT_SUCCESS);*/
 			return (0);
 		}
-		if (check_blanks(line) || _strlen(line) == 0)
+		if (_strlen(line) == 0)
 		{
 			free(line);
 			continue;
