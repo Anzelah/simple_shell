@@ -36,7 +36,7 @@ char *_strcat(char *s1, char *s2)
  * Return: 1 on successi and 0 if there are no blanks
  */
 
-long unsigned int check_blanks(char *str)
+unsigned long int check_blanks(char *str)
 {
 	int i;
 	long int index = 0;
