@@ -42,7 +42,7 @@ char *find_path(char *argument)
 			break;
 		}
 		free(PathToLookFor);
-		i++; /*skiping : character*/
+		i++;
 	}
 	return (NULL);
 }

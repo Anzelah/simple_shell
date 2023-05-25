@@ -44,14 +44,14 @@ int main(void)
 	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
 
-	if (isatty(STDIN_FILENO) == 1)
-		_printf("$ ");
-	else
-	{
-		non_interactive();
-	}
 	while (1)
 	{
+		if (isatty(STDIN_FILENO) == 1)
+			_printf("$ ");
+		else
+		{
+			non_interactive();
+		}
 		r_getline = getline(&line, &len, stdin);
 		if (r_getline == -1)
 		{
@@ -68,8 +68,9 @@ int main(void)
 		{
 			if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
 				break;
-		line[j] = '\0';
 		}
+		line[j] = '\0';
+		
 		parsed_input = parse_input(line);
 		free(line);
 		if (!execute_action(parsed_input))

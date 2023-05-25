@@ -38,7 +38,7 @@ char **parse_input(char *str)
 		free(src);
 		return (NULL);
 	}
-	parsed = strtok(str, delim);
+	parsed = strtok(src, delim);/* from str to src*/
 	while (parsed != NULL)
 	{
 		count_tokens++;
