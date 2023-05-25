@@ -49,7 +49,7 @@ char *_getenv(char *nm);
 void free_tokens(char **tokens);
 
 /* empty inputs */
-unsigned long intcheck_blanks(char *);
+unsigned long int check_blanks(char *);
 /* sigal */
 void ctrl_c(int sig __attribute__((unused)));
 #endif
