@@ -23,7 +23,7 @@ int execute_action(char **action)
 	path = find_path(action[0]);
 	if (path == NULL)
 	{
-		perror(action[0]);
+		free(path);
 		return (1);
 	}
 	childpid = fork();
