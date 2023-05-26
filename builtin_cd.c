@@ -3,8 +3,15 @@
 
 void builtin_cd(char **args)
 {
+	char *home;
 	if (!args[1])
-		chdir(_getenv("HOME"));
+	{
+		home = _getenv("HOME");
+		if (home)
+			chdir(home);
+		else
+			perror("");
+	}
 	else
 	{
 		if (chdir(args[1]) != 0)
