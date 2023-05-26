@@ -42,6 +42,35 @@ int _atoi(char *s)
 	return (sign * result);
 }
 /**
+ * handle_builtin_setenv- builtin
+ * @action: action
+ */
+void handle_builtin_setenv(char **action)
+{
+	if (_strcmp(action[0], "setenv") == 0)
+	{
+		if (action[1] == NULL || action[2] == NULL)
+		{
+			perror("");
+			exit(1);
+		}
+		setenv(action[1], action[2], 1);
+	}
+	else if (_strcmp(action[0], "unsetenv") == 0)
+	{
+		if (action[1] == NULL)
+		{
+			perror("");
+			exit(1);
+		}
+		if (unsetenv(action[1]) != 0)
+		{
+			perror("");
+			exit(1);
+		}
+	}
+}
+/**
  * handle_builtin - builtin
  * @action: action
  */
@@ -68,28 +97,7 @@ void handle_builtin(char **action)
 			_printf(environ[i]), _printf("\n");
 		exit(0);
 	}
-	else if (_strcmp(action[0], "setenv") == 0)
-	{
-		if (action[1] == NULL || action[2] == NULL)
-		{
-			perror("");
-			exit(1);
-		}
-		setenv(action[1], action[2], 1);
-	}
-	else if (_strcmp(action[0], "unsetenv") == 0)
-	{
-		if (action[1] == NULL)
-		{
-			perror("");
-			exit(1);
-		}
-		if (unsetenv(action[1]) != 0)
-		{
-			perror("");
-			exit(1);
-		}
-	}
+	handle_builtin_setenv(action);
 }
 /**
  * execute_action - executes action
