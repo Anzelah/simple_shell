@@ -24,19 +24,19 @@ int execute_action(char **action)
 	if (path == NULL)
 	{
 		free(path);
-		return (0);
+		return (1);
 	}
 	childpid = fork();
 	if (childpid == -1) /* if forking fails */
 	{
 		perror("Error:");
+		return (1);
 	}
 	else if (childpid == 0) /* in the child process */
 	{
 		if (execve(path, action, environ) == -1)
 		{
 			perror("Error:");
-			exit(EXIT_FAILURE);
 		}
 	}
 	else
@@ -44,5 +44,5 @@ int execute_action(char **action)
 		wait(&status); /* or waitpid(childpid, &status, 0) */
 		free(path);
 	}
-	return (1); /* don't have to handle environment */
+	return (0); /* don't have to handle environment */
 }
