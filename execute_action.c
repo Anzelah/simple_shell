@@ -23,8 +23,8 @@ int execute_action(char **action)
 	path = find_path(action[0]);
 	if (path == NULL)
 	{
-		perror(action[0]);
-		return (1);
+		free(path);
+		return (0);
 	}
 	childpid = fork();
 	if (childpid == -1) /* if forking fails */
