@@ -74,6 +74,14 @@ int main(void)
 
 			line[j] = '\0';
 		}
+		for (j = 0; j < _strlen(line); j++)
+		{
+			if (line[j] == '#')
+			{
+				line[j] = '\0';
+				break;
+			}
+		}
 		parsed_input = parse_input(line);
 		free(line);
 		if (!execute_action(parsed_input, parsed_input))
