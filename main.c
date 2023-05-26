@@ -12,17 +12,17 @@ void non_interactive(void)
 
 	while ((r_getline = getline(&line, &len, stdin)) != -1)
 	{
-		if (check_blanks(line) == _strlen(line) - 1 || _strlen(line) == 0)
+		if (check_blanks(line) || _strlen(line) == 0)
                 {
                         free(line);
                         continue;
                 }
-                for (j = _strlen(line) - 1; j > 0; j--) /* check for empty space */
+                for (j = _strlen(line) - 1; j > 0; j--)/* check for empty space */
                 {
-                        if (line[j] != ' ' && line[j] != '\t')
-				break;
-			line[j] = '\0';
-		}
+                        if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
+                                break;
+                        line[j] = '\0';
+                }
 
 		parsed_input = parse_input(line);
 		free(line);
@@ -60,16 +60,16 @@ int main(void)
 		if (r_getline == -1)
 		{
 			free(line);
-			exit(0);
+			continue;
 		}
-		if (check_blanks(line) == _strlen(line) - 1 || _strlen(line) == 0)
+		if (check_blanks(line) || _strlen(line) == 0)
                 {
                         free(line);
                         continue;
                 }
-                for (j = _strlen(line) - 1; j > 0; j--) /* check for empty space */
+                for (j = _strlen(line) - 1; j > 0; j--)/* check for empty space */
                 {
-			      if (line[j] != ' ' && line[j] != '\t')
+                        if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
                                 break;
                         line[j] = '\0';
                 }
