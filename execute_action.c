@@ -60,13 +60,35 @@ void handle_builtin(char **action)
 			exit(_atoi(action[1]));
 		}
 	}
-	if (_strcmp(action[0], "cd") == 0)
+	else if (_strcmp(action[0], "cd") == 0)
 		builtin_cd(action);
-	if (_strcmp(action[0], "env") == 0)
+	else if (_strcmp(action[0], "env") == 0)
 	{
 		for (i = 0; environ[i] != NULL; i++)
 			_printf(environ[i]), _printf("\n");
 		exit(0);
+	}
+	else if (_strcmp(action[0], "setenv") == 0)
+	{
+		if (action[1] == NULL || action[2] == NULL)
+		{
+			perror("");
+			exit(1);
+		}
+		setenv(action[1], action[2], 1);
+	}
+	else if (_strcmp(action[0], "unsetenv") == 0)
+	{
+		if (action[1] == NULL)
+		{
+			perror("");
+			exit(1);
+		}
+		if (unsetenv(action[1]) != 0)
+		{
+			perror("");
+			exit(1);
+		}
 	}
 }
 /**
