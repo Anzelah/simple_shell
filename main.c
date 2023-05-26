@@ -25,6 +25,7 @@ void non_interactive(void)
                         break;
                 }
                 line[j] = '\0';
+
 		parsed_input = parse_input(line);
 		free(line);
 		if (!execute_action(parsed_input))
@@ -61,7 +62,7 @@ int main(void)
 		if (r_getline == -1)
 		{
 			free(line);
-			continue;
+			return (0);
 		}
 		if (check_blanks(line) == _strlen(line) - 1 || _strlen(line) == 0)
                 {
@@ -76,6 +77,7 @@ int main(void)
                         break;
                 }
                 line[j] = '\0';
+
 		parsed_input = parse_input(line);
 	       	free(line);
 		if (!execute_action(parsed_input))
