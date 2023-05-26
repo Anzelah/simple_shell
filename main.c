@@ -17,9 +17,9 @@ void non_interactive(void)
                         free(line);
                         continue;
                 }
-                for (j = _strlen(line) - 1; j > 0; j--) /* check for empty space */
+                for (j = _strlen(line); j > 0; j--) /* check for empty space */
                 {
-                        if (check_blanks(line))
+                        if (check_blanks(&line[j - 1]))
                                 for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
                                         continue;
                         break;
@@ -61,16 +61,16 @@ int main(void)
 		if (r_getline == -1)
 		{
 			free(line);
-			return (0);
+			exit(0);
 		}
 		if (check_blanks(line) == _strlen(line) - 1 || _strlen(line) == 0)
 		{
 			free(line);
 			continue;
 		}
-		for (j = _strlen(line) - 1; j > 0; j--) /* check for empty space */
+		for (j = _strlen(line); j > 0; j--) /* check for empty space */
 		{
-			if (check_blanks(line))
+			if (check_blanks(&line[j - 1]))
 				for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
 					continue;
 			break;
