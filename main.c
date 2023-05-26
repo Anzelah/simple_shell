@@ -35,6 +35,7 @@ void non_interactive(void)
 		line = NULL;
 		free_tokens(parsed_input);
 	}
+	free(line);
 }
 
 /**
@@ -53,7 +54,9 @@ int main(void)
 		if (isatty(STDIN_FILENO) == 1)
 			_printf("$ ");
 		else
+		{
 			non_interactive();
+		}
 		r_getline = getline(&line, &len, stdin);
 		if (r_getline == -1)
 		{
