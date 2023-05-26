@@ -17,12 +17,15 @@ void non_interactive(void)
                         free(line);
                         continue;
                 }
-                for (j = _strlen(line) - 1; j > 0; j--)/* check for empty space */
+                for (j = _strlen(line) - 1; j > 0; j--) /* check for empty space */
                 {
-                        if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
-                                break;
-                line[j] = '\0';
+                        if (check_blanks(line))
+                                for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
+                                        continue;
+                        break;
                 }
+                line[j] = '\0';
+
 		parsed_input = parse_input(line);
 		free(line);
 		if (!execute_action(parsed_input))
@@ -62,16 +65,19 @@ int main(void)
 			exit(0);
 		}
 		if (check_blanks(line) == _strlen(line) - 1 || _strlen(line) == 0)
-		{
-			free(line);
-			continue;
-		}
-		for (j = _strlen(line) - 1; j > 0; j--)/* check for empty space */
                 {
-                        if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
-                                break;
-                line[j] = '\0';
+                        free(line);
+                        continue;
                 }
+                for (j = _strlen(line) - 1; j > 0; j--) /* check for empty space */
+                {
+                        if (check_blanks(line))
+                                for (j = 0; line[j] != '\0' && line[j] != '\n'; j++)
+                                        continue;
+                        break;
+                }
+                line[j] = '\0';
+
 		parsed_input = parse_input(line), free(line);
 		if (!execute_action(parsed_input))
 		{
