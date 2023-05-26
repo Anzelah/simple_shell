@@ -125,7 +125,6 @@ int execute_action(char **action, char **parsed_input)
 	char *path = NULL;
 
 	hb = handle_builtin(action, parsed_input);
-	printf("hb = %d\n", hb);
 	if (hb == 0 || hb == 1)
 		return (hb);
 	path = find_path(action[0]);
