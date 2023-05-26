@@ -45,6 +45,7 @@ int execute_action(char **);
 char *find_path(char *);
 int is_exec(char *);
 char *_getenv(char *nm);
+void builtin_cd(char **);
 /* parsing */
 void free_tokens(char **tokens);
 
