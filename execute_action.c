@@ -37,7 +37,7 @@ int execute_action(char **action)
 		if (execve(path, action, environ) == -1)
 		{
 			perror("Error:");
-			return (1);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else

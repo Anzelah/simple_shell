@@ -19,13 +19,11 @@ void non_interactive(void)
                 }
                 for (j = _strlen(line) - 1; j > 0; j--) /* check for empty space */
                 {
-                        if (check_blanks(line))
-				if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
-					break;
-                                        /*continue;
-                        break;*/
-                }
+                        if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
+				break;
+                
                 line[j] = '\0';
+		}
 
 		parsed_input = parse_input(line);
 		free(line);
