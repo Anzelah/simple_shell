@@ -77,10 +77,32 @@ int handle_builtin_setenv(char **action)
 /**
  * handle_builtin - builtin
  * @action: action
+ * @parsed_input: parsed input
  * Return: int
  */
-int handle_builtin(char **action)
+int handle_builtin(char **action, char **parsed_input)
 {
+	int i;
+
+	if (_strcmp(action[0], "exit") == 0)
+	{
+		if (action[1] == NULL)
+		{
+			return (0);
+		}
+		else
+		{
+			free_tokens(parsed_input);
+			exit(_atoi(action[1]));
+		}
+	}
+	if (_strcmp(action[0], "env") == 0)
+	{
+		for (i = 0; environ[i] != NULL; i++)
+			_printf(environ[i]), _printf("\n");
+		return (1);
+	}
+
 	if (_strcmp(action[0], "cd") == 0)
 	{
 		builtin_cd(action);
@@ -93,34 +115,18 @@ int handle_builtin(char **action)
 /**
  * execute_action - executes action
  *@action: the action to execute
+ *@parsed_input: parsed input
  * Return: 0 to exit or 1
  */
 int execute_action(char **action, char **parsed_input)
 {
 	pid_t childpid;
-	int status;
+	int status, hb;
 	char *path = NULL;
-	int hb, i;
 
-	if (_strcmp(action[0], "exit") == 0)
-	{
-		if (action[1] == NULL)
-		return (0);
-		else
-			{
-				free_tokens(parsed_input);
-				exit(_atoi(action[1]));
-			}
-	}
-	if (_strcmp(action[0], "env") == 0)
-	{
-		for (i = 0; environ[i] != NULL; i++)
-			_printf(environ[i]), _printf("\n");
-		return (1);
-	}
-
-	hb = handle_builtin(action);
-	if (hb == 0 && hb == 1)
+	hb = handle_builtin(action, parsed_input);
+	printf("hb = %d\n", hb);
+	if (hb == 0 || hb == 1)
 		return (hb);
 	path = find_path(action[0]);
 	if (path == NULL)
