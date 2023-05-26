@@ -71,8 +71,7 @@ int main(void)
                 for (j = _strlen(line) - 1; j > 0; j--) /* check for empty space */
                 {
 			 if (line[j] != ' ' && line[j] != '\n' && line[j] != '\t')
-				/*continue;*/
-                        break;
+				break;
                 
                 line[j] = '\0';
 		}
