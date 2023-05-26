@@ -74,7 +74,6 @@ int main(void)
 
 			line[j] = '\0';
 		}
-
 		parsed_input = parse_input(line);
 		free(line);
 		if (!execute_action(parsed_input))
