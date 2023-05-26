@@ -95,7 +95,7 @@ int handle_builtin(char **action)
  *@action: the action to execute
  * Return: 0 to exit or 1
  */
-int execute_action(char **action)
+int execute_action(char **action, char **parsed_input)
 {
 	pid_t childpid;
 	int status;
@@ -105,13 +105,12 @@ int execute_action(char **action)
 	if (_strcmp(action[0], "exit") == 0)
 	{
 		if (action[1] == NULL)
-		{
-			return (0);
-		}
+		return (0);
 		else
-		{
-			exit(_atoi(action[1]));
-		}
+			{
+				free_tokens(parsed_input);
+				exit(_atoi(action[1]));
+			}
 	}
 	if (_strcmp(action[0], "env") == 0)
 	{

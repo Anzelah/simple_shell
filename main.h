@@ -39,7 +39,7 @@ StringList *AppendString(StringList **head, char *str); /* remove const */
 
 /*Helper functions*/
 char **parse_input(char *);
-int execute_action(char **);
+int execute_action(char **, char **parsed_input);
 
 /* handle path */
 char *find_path(char *);

@@ -27,7 +27,7 @@ void non_interactive(void)
 
 		parsed_input = parse_input(line);
 		free(line);
-		if (!execute_action(parsed_input))
+		if (!execute_action(parsed_input, parsed_input))
 		{
 			free_tokens(parsed_input);
 			break;
@@ -76,7 +76,7 @@ int main(void)
 		}
 		parsed_input = parse_input(line);
 		free(line);
-		if (!execute_action(parsed_input))
+		if (!execute_action(parsed_input, parsed_input))
 		{
 			free_tokens(parsed_input);
 			break;
