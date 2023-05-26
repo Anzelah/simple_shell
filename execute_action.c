@@ -44,37 +44,42 @@ int _atoi(char *s)
 /**
  * handle_builtin_setenv- builtin
  * @action: action
+ * Return: int
  */
-void handle_builtin_setenv(char **action)
+int handle_builtin_setenv(char **action)
 {
 	if (_strcmp(action[0], "setenv") == 0)
 	{
 		if (action[1] == NULL || action[2] == NULL)
 		{
 			perror("");
-			exit(1);
+			return (1);
 		}
 		setenv(action[1], action[2], 1);
+		return (1);
 	}
 	else if (_strcmp(action[0], "unsetenv") == 0)
 	{
 		if (action[1] == NULL)
 		{
 			perror("");
-			exit(1);
+			return (1);
 		}
 		if (unsetenv(action[1]) != 0)
 		{
 			perror("");
-			exit(1);
+			return (1);
 		}
+		return (1);
 	}
+	return (2);
 }
 /**
  * handle_builtin - builtin
  * @action: action
+ * Return: int
  */
-void handle_builtin(char **action)
+int handle_builtin(char **action)
 {
 	int i;
 
@@ -90,14 +95,19 @@ void handle_builtin(char **action)
 		}
 	}
 	else if (_strcmp(action[0], "cd") == 0)
+	{
 		builtin_cd(action);
+		return (1);
+	}
 	else if (_strcmp(action[0], "env") == 0)
 	{
 		for (i = 0; environ[i] != NULL; i++)
 			_printf(environ[i]), _printf("\n");
-		exit(0);
+		return (1);
 	}
-	handle_builtin_setenv(action);
+	if (handle_builtin_setenv(action) == 1)
+		return (1);
+	return (2);
 }
 /**
  * execute_action - executes action
@@ -109,8 +119,11 @@ int execute_action(char **action)
 	pid_t childpid;
 	int status;
 	char *path = NULL;
+	int hb;
 
-	handle_builtin(action);
+	hb = handle_builtin(action);
+	if (hb == 0 && hb == 1)
+		return (hb);
 	path = find_path(action[0]);
 	if (path == NULL)
 	{
