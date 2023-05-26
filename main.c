@@ -51,6 +51,7 @@ int main(void)
 	signal(SIGINT, ctrl_c);
 	while (1)
 	{
+		line = NULL;
 		if (isatty(STDIN_FILENO) == 1)
 			_printf("$ ");
 		else
