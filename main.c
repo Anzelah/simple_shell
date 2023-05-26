@@ -48,9 +48,9 @@ int main(void)
 	char *line = NULL, **parsed_input;
 	ssize_t r_getline = 0;
 
+	signal(SIGINT, ctrl_c);
 	while (1)
 	{
-		line = NULL;
 		if (isatty(STDIN_FILENO) == 1)
 			_printf("$ ");
 		else
