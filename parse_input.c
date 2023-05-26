@@ -28,7 +28,7 @@ char **parse_input(char *str)
 	char *parsed;
 	char **tokens; /* this is an array */
 	char *src; /* hold our string on heap*/
-	char *delim = " \n";
+	char *delim = " \n\t";
 	int length = 0;
 	int count_tokens = 0;
 
