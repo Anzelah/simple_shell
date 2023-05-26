@@ -37,7 +37,6 @@ int execute_action(char **action)
 		if (execve(path, action, environ) == -1)
 		{
 			perror("Error:");
-			exit(EXIT_FAILURE);
 		}
 	}
 	else
@@ -45,5 +44,5 @@ int execute_action(char **action)
 		wait(&status); /* or waitpid(childpid, &status, 0) */
 		free(path);
 	}
-	return (-1); /* don't have to handle environment */
+	return (1); /* don't have to handle environment */
 }
