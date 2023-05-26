@@ -81,28 +81,9 @@ int handle_builtin_setenv(char **action)
  */
 int handle_builtin(char **action)
 {
-	int i;
-
-	if (_strcmp(action[0], "exit") == 0)
-	{
-		if (action[1] == NULL)
-		{
-			exit(0);
-		}
-		else
-		{
-			exit(_atoi(action[1]));
-		}
-	}
-	else if (_strcmp(action[0], "cd") == 0)
+	if (_strcmp(action[0], "cd") == 0)
 	{
 		builtin_cd(action);
-		return (1);
-	}
-	else if (_strcmp(action[0], "env") == 0)
-	{
-		for (i = 0; environ[i] != NULL; i++)
-			_printf(environ[i]), _printf("\n");
 		return (1);
 	}
 	if (handle_builtin_setenv(action) == 1)
@@ -119,7 +100,25 @@ int execute_action(char **action)
 	pid_t childpid;
 	int status;
 	char *path = NULL;
-	int hb;
+	int hb, i;
+
+	if (_strcmp(action[0], "exit") == 0)
+	{
+		if (action[1] == NULL)
+		{
+			return (0);
+		}
+		else
+		{
+			exit(_atoi(action[1]));
+		}
+	}
+	if (_strcmp(action[0], "env") == 0)
+	{
+		for (i = 0; environ[i] != NULL; i++)
+			_printf(environ[i]), _printf("\n");
+		return (1);
+	}
 
 	hb = handle_builtin(action);
 	if (hb == 0 && hb == 1)
