@@ -42,22 +42,23 @@ int _atoi(char *s)
 	return (sign * result);
 }
 /**
- * execute_action - executes action
- *@action: the action to execute
- * Return: 0 to exit or 1
+ * handle_builtin - builtin
+ * @action: action
  */
-int execute_action(char **action)
+void handle_builtin(char **action)
 {
-	pid_t childpid;
-	int status, i;
-	char *path = NULL;
+	int i;
 
 	if (_strcmp(action[0], "exit") == 0)
 	{
 		if (action[1] == NULL)
-			return (0);
+		{
+			exit(0);
+		}
 		else
+		{
 			exit(_atoi(action[1]));
+		}
 	}
 	if (_strcmp(action[0], "cd") == 0)
 		builtin_cd(action);
@@ -65,8 +66,21 @@ int execute_action(char **action)
 	{
 		for (i = 0; environ[i] != NULL; i++)
 			_printf(environ[i]), _printf("\n");
-		return (1);
+		exit(0);
 	}
+}
+/**
+ * execute_action - executes action
+ *@action: the action to execute
+ * Return: 0 to exit or 1
+ */
+int execute_action(char **action)
+{
+	pid_t childpid;
+	int status;
+	char *path = NULL;
+
+	handle_builtin(action);
 	path = find_path(action[0]);
 	if (path == NULL)
 	{
