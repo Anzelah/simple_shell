@@ -62,7 +62,7 @@ int main(void)
 		if (r_getline == -1)
 		{
 			free(line);
-			return (0);
+			exit(0);
 		}
 		if (check_blanks(line) == _strlen(line) - 1 || _strlen(line) == 0)
                 {
