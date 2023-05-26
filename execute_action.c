@@ -24,7 +24,7 @@ int execute_action(char **action)
 	if (path == NULL)
 	{
 		free(path);
-		return (1);
+		return (0);
 	}
 	childpid = fork();
 	if (childpid == -1) /* if forking fails */
