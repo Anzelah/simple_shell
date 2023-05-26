@@ -37,7 +37,22 @@ void non_interactive(void)
 	}
 	free(line);
 }
+/**
+ * removeComment - remove comment
+ * @linem: line
+ */
+void removeComment(char **linem)
+{
+	size_t j;
+	char *line = *linem;
 
+	for (j = 0; j < _strlen(line); j++)
+		if (line[j] == '#')
+		{
+			line[j] = '\0';
+			break;
+		}
+}
 /**
  * main - entry point
  * Return: int
@@ -74,15 +89,7 @@ int main(void)
 
 			line[j] = '\0';
 		}
-		for (j = 0; j < _strlen(line); j++)
-		{
-			if (line[j] == '#')
-			{
-				line[j] = '\0';
-				break;
-			}
-		}
-		parsed_input = parse_input(line);
+		removeComment(&line), parsed_input = parse_input(line);
 		free(line);
 		if (!execute_action(parsed_input, parsed_input))
 		{
