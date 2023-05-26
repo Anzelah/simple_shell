@@ -9,7 +9,7 @@ int execute_action(char **action)
 {
 	pid_t childpid;
 	int status, i;
-	char *path = NULL;
+	char *path;
 
 	if (_strcmp(action[0], "exit") == 0)
 		/*exit(0);*/
