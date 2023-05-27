@@ -82,19 +82,21 @@ int handle_builtin_setenv(char **action)
  */
 int handle_builtin(char **action, char **parsed_input)
 {
-	int i;
+	int i, status;
 
 	if (_strcmp(action[0], "exit") == 0)
 	{
 		if (action[1] == NULL)
 		{
-			return (0);
+			exit (0);
 		}
 		else
 		{
+			
+			status = (atoi(action[0]));
 			free_tokens(parsed_input);
-			exit(_atoi(action[1]));
 		}
+		exit(status);
 	}
 	if (_strcmp(action[0], "env") == 0)
 	{
